@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<div class='body'>
+<head>
+  <title>Servers</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="nav">
+		<h1>Post you Resume</h1>
+		</br>
+		<h4 class="nav_text"><%= link_to 'About Us', home_index_path %> | <%= link_to 'Contact', contact_info_path %> | <%= link_to 'Job Hunters', job_hunters_path %> | 
+			<% if user_signed_in? %>
+			<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %> / <%= link_to 'Your Profile', user_profiles_path(current_user) %>
+			<% else %>
+			<%= link_to 'Register', new_user_registration_path %> / <%= link_to 'Sign in', new_user_session_path %>
+			<% end %></h4>
+			<h4><% if admin_signed_in? %>
+			<%= link_to 'Sign out', destroy_admin_session_path, :method => :delete %> / <%= link_to 'All Hunters', job_admin_show_path %>
+			<% end %></h4>
+	</div>
+
+<%= yield %>
+
+</body>
+</div>
+</html>

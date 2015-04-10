@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <button><%= link_to 'Post your Resume', new_user_profile_path(current_user) %></button>
+<% end %>
+
+<div>
+  <h1>Job Hunters</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Full name</th>
+        <th>Position</th>
+        <th>Years of experiance</th>
+        <th>Cover letter</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @profiles.reverse_each do |profile| %>
+        <tr>
+          <td><%= profile.full_name %></td>
+          <td><%= profile.position %></td>
+          <td><%= profile.years_of_experiance %></td>
+          <td><%= profile.cover_letter %></td>
+          <td><%= link_to 'Show', [profile.user, profile] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

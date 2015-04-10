@@ -1,0 +1,12 @@
+<h1>All Users</h1>
+<h3>We have <%= User.count %> users </h3>
+<tr>
+	<% @user.each do |user| %>
+		<li>
+			<td><%= user.id %></td> ||
+			<td><%= link_to user.email , user_profiles_path(user.id) %></td>
+			<td><%= link_to 'Edit User', edit_user_registration_path(user.id) %></td>
+			<td><%= link_to 'Destroy', user_registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</li>
+	<% end %>
+</tr>

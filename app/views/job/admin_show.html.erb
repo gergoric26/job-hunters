@@ -1,0 +1,40 @@
+<button><%= link_to 'All User', admin_all_users_path %></button>
+
+<h1>Admin</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Years of experiance</th>
+      <th>Cover letter</th>
+      <th>Resume</th>
+      <th>Reference</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.reverse_each do |profile| %>
+      <tr>
+        <td><%= profile.full_name %></td>
+        <td><%= profile.phone_number %></td>
+        <td><%= profile.email %></td>
+        <td><%= profile.position %></td>
+        <td><%= profile.years_of_experiance %></td>
+        <td><%= profile.cover_letter %></td>
+        <td><%= profile.resume %></td>
+        <td><%= profile.reference %></td>
+        <td><%= link_to 'Show', [profile.user, profile] %></td>
+        <td><%= link_to 'Edit', edit_user_profile_path(profile.user, profile) %></td>
+        <td><%= link_to 'Destroy', [profile.user, profile], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
